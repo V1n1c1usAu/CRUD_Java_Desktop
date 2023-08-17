@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 01-Jul-2023 às 03:24
+-- Tempo de geração: 17-Ago-2023 às 17:17
 -- Versão do servidor: 10.4.24-MariaDB
--- versão do PHP: 8.1.6
+-- versão do PHP: 8.0.25
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -20,8 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `ifsis`
 --
-CREATE DATABASE IF NOT EXISTS `ifsis` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
-USE `ifsis`;
 
 -- --------------------------------------------------------
 
@@ -34,15 +32,16 @@ CREATE TABLE `usuario` (
   `nome` varchar(100) NOT NULL,
   `email` varchar(100) NOT NULL,
   `senha` varchar(255) NOT NULL,
-  `datacriacao` datetime NOT NULL DEFAULT current_timestamp()
+  `datacriacao` datetime NOT NULL DEFAULT current_timestamp(),
+  `status` int(1) NOT NULL DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Extraindo dados da tabela `usuario`
 --
 
-INSERT INTO `usuario` (`id`, `nome`, `email`, `senha`, `datacriacao`) VALUES
-(1, 'Marcelo Rafael Borth', 'marcelo.borth@ifpr.edu.br', '123', '2023-06-30 21:07:51');
+INSERT INTO `usuario` (`id`, `nome`, `email`, `senha`, `datacriacao`, `status`) VALUES
+(1, 'Marcelo Rafael Borth', 'marcelo.borth@ifpr.edu.br', '123', '2023-06-30 21:07:51', 1);
 
 --
 -- Índices para tabelas despejadas
