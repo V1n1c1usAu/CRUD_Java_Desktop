@@ -169,7 +169,7 @@ public class UsuarioCadastrar extends javax.swing.JFrame {
         }
         //Verificar se email é válido
         
-        Usuario u = new Usuario(null, nome, email, senha);
+        Usuario u = new Usuario(null, nome, email, senha, null);
         
         try {
             UsuarioDao dao = new UsuarioDao();

@@ -36,6 +36,7 @@ public class UsuarioAlterar extends javax.swing.JFrame {
         jTextFieldEmail = new javax.swing.JTextField();
         jTextFieldID = new javax.swing.JTextField();
         jButtonSalvarDadosGerais = new javax.swing.JButton();
+        jComboBoxStatus = new javax.swing.JComboBox<>();
         jPanelAlterarSenha = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
@@ -57,9 +58,20 @@ public class UsuarioAlterar extends javax.swing.JFrame {
 
         jLabel4.setText("Email:");
 
+        jTextFieldEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldEmailActionPerformed(evt);
+            }
+        });
+
         jTextFieldID.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
                 jTextFieldIDFocusLost(evt);
+            }
+        });
+        jTextFieldID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldIDActionPerformed(evt);
             }
         });
 
@@ -70,6 +82,8 @@ public class UsuarioAlterar extends javax.swing.JFrame {
                 jButtonSalvarDadosGeraisActionPerformed(evt);
             }
         });
+
+        jComboBoxStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ATIVO", "DESATIVADO" }));
 
         javax.swing.GroupLayout jPanelDadosGeraisLayout = new javax.swing.GroupLayout(jPanelDadosGerais);
         jPanelDadosGerais.setLayout(jPanelDadosGeraisLayout);
@@ -96,7 +110,9 @@ public class UsuarioAlterar extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelDadosGeraisLayout.createSequentialGroup()
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGroup(jPanelDadosGeraisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jComboBoxStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         jPanelDadosGeraisLayout.setVerticalGroup(
@@ -114,7 +130,9 @@ public class UsuarioAlterar extends javax.swing.JFrame {
                 .addGroup(jPanelDadosGeraisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jComboBoxStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
                 .addComponent(jButtonSalvarDadosGerais)
                 .addContainerGap())
         );
@@ -216,7 +234,7 @@ public class UsuarioAlterar extends javax.swing.JFrame {
 
     private void jTextFieldIDFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldIDFocusLost
         String id = jTextFieldID.getText();
-        
+
         if (!id.trim().equals("")) {
             this.mostrarUsuario(id);
         } else {
@@ -228,15 +246,20 @@ public class UsuarioAlterar extends javax.swing.JFrame {
 
     public void mostrarUsuario(String idTexto) {
         try {
-            Integer id = Integer.parseInt(idTexto);
+            Integer id = Integer.valueOf(idTexto);
 
             UsuarioDao dao = new UsuarioDao();
             Usuario obj = dao.getUsuario(id);
 
             if (obj != null) {
+
+                //Recupera o status salvo no banco
+                int status = recuperaStatus(obj);
+
                 //Preenche os dados do formulário
                 jTextFieldNome.setText(obj.getNome());
                 jTextFieldEmail.setText(obj.getEmail());
+                jComboBoxStatus.setSelectedIndex(status);
             } else {
                 JOptionPane.showMessageDialog(this, "Registro não encontrado.");
                 jTextFieldID.setText("");
@@ -253,6 +276,16 @@ public class UsuarioAlterar extends javax.swing.JFrame {
         }
     }
 
+    public int recuperaStatus(Usuario obj) {
+        int status;
+        if (obj.getStatus() == 1) {
+            status = 0;
+        } else {
+            status = 1;
+        }
+        return status;
+    }
+
     private void jButtonSalvarDadosGeraisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarDadosGeraisActionPerformed
         //Validações
         // - Campos obrigatórios
@@ -262,7 +295,9 @@ public class UsuarioAlterar extends javax.swing.JFrame {
         String nome = jTextFieldNome.getText();
         String email = jTextFieldEmail.getText();
 
-        Usuario u = new Usuario(id, nome, email, null);
+        Integer status = AlteraStatus();
+
+        Usuario u = new Usuario(id, nome, email, null, status);
 
         try {
             UsuarioDao dao = new UsuarioDao();
@@ -275,9 +310,28 @@ public class UsuarioAlterar extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButtonSalvarDadosGeraisActionPerformed
 
+    public Integer AlteraStatus() {
+        Integer status;
+
+        if (jComboBoxStatus.getSelectedItem().equals("ATIVO")) {
+            status = 1;
+        } else {
+            status = 0;
+        }
+        return status;
+    }
+
     private void jButtonAlterarSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlterarSenhaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonAlterarSenhaActionPerformed
+
+    private void jTextFieldEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldEmailActionPerformed
+
+    private void jTextFieldIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldIDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldIDActionPerformed
 
     /**
      * @param args the command line arguments
@@ -317,6 +371,7 @@ public class UsuarioAlterar extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAlterarSenha;
     private javax.swing.JButton jButtonSalvarDadosGerais;
+    private javax.swing.JComboBox<String> jComboBoxStatus;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
