@@ -5,22 +5,24 @@ package modelo;
  * @author Marcelo Rafael Borth
  */
 public class Usuario {
-    
+
     private Integer id;
     private String nome;
     private String email;
     private String senha;
+    private Integer status;
 
     public Usuario() {
     }
 
-    public Usuario(Integer id, String nome, String email, String senha) {
+    public Usuario(Integer id, String nome, String email, String senha, Integer status) {
         this.id = id;
         this.nome = nome;
         this.email = email;
         this.senha = senha;
+        this.status = status;
     }
-    
+
     public Integer getId() {
         return id;
     }
@@ -52,6 +54,13 @@ public class Usuario {
     public void setSenha(String senha) {
         this.senha = senha;
     }
-    
-    
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
 }

@@ -18,7 +18,7 @@ public class UsuarioGerenciar extends javax.swing.JFrame {
      */
     public UsuarioGerenciar() {
         initComponents();
-        
+
     }
 
     /**
@@ -69,21 +69,19 @@ public class UsuarioGerenciar extends javax.swing.JFrame {
             }
         });
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Listagem"));
-
         jTableDados.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID", "Nome", "Email", "Data Cadastro"
+                "ID", "Nome", "Email", "Data Cadastro", "Status"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -202,7 +200,7 @@ public class UsuarioGerenciar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNovoActionPerformed
-        
+
         new UsuarioCadastrar().setVisible(true);
 
     }//GEN-LAST:event_jButtonNovoActionPerformed
@@ -215,62 +213,63 @@ public class UsuarioGerenciar extends javax.swing.JFrame {
         //}
 
     }//GEN-LAST:event_jTextFieldPesquisarKeyReleased
-    
+
     private void preencherTabela(String campoPesquisa) {
         DefaultTableModel modelo = (DefaultTableModel) jTableDados.getModel();
         modelo.setNumRows(0);
         try {
-            
+
             UsuarioDao dao = new UsuarioDao();
             List<Usuario> lista = dao.buscar(campoPesquisa);
-            
+
             for (Usuario obj : lista) {
-                
+
                 String[] linha = {
                     obj.getId().toString(),
                     obj.getNome(),
                     obj.getEmail(),
-                    ""
+                    "",
+                    obj.getStatus().toString()
                 };
                 modelo.addRow(linha);
             }
-            
+
         } catch (Exception ex) {
             ex.printStackTrace();
             JOptionPane.showMessageDialog(this, "Erro ao pesquisar. " + ex.getMessage());
         }
-        
+
     }
-    
+
 
     private void jButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirActionPerformed
-        
+
         int linhaSelecionada = jTableDados.getSelectedRow();
-        
+
         if (linhaSelecionada != -1) {
             Integer id = Integer.valueOf(jTableDados.getModel().getValueAt(linhaSelecionada, 0).toString());
-            
+
             try {
                 UsuarioDao dao = new UsuarioDao();
                 dao.excluir(id);
-                
+
                 DefaultTableModel modelo = (DefaultTableModel) jTableDados.getModel();
                 modelo.removeRow(linhaSelecionada);
-                
+
                 JOptionPane.showMessageDialog(this, "Registro excluido com sucesso.");
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, "Erro ao excluir registro." + e.getMessage());
-                
+
             }
         } else {
             JOptionPane.showMessageDialog(this, "Selecione um registro para excluir.");
         }
-        
+
 
     }//GEN-LAST:event_jButtonExcluirActionPerformed
-    
+
     private void alterar() {
-        
+
     }
 
     private void jButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlterarActionPerformed

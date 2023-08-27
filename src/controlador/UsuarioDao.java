@@ -53,6 +53,7 @@ public class UsuarioDao {
                     u.setId(rs.getInt("id"));
                     u.setNome(rs.getString("nome"));
                     u.setEmail(rs.getString("email"));
+                    u.setStatus(rs.getInt("Status"));
 
                     lista.add(u);
                 }
@@ -82,6 +83,7 @@ public class UsuarioDao {
                     obj.setId(rs.getInt("id"));
                     obj.setNome(rs.getString("nome"));
                     obj.setEmail(rs.getString("email"));
+                    obj.setStatus(rs.getInt("status"));
                 }
             }
         } catch (Exception e) {
@@ -95,15 +97,17 @@ public class UsuarioDao {
         int retorno;
 
         String sql = "update usuario"
-                + "      set nome  = ?,"
-                + "          email = ?"
-                + "    where id    = ?";
+                + "      set nome   = ?,"
+                + "          email  = ?,"
+                + "          status = ? "
+                + "      where   id = ? ";
 
         Connection conexao = Conexao.getConexao();
         try (PreparedStatement ps = conexao.prepareStatement(sql)) {
             ps.setString(1, u.getNome());
             ps.setString(2, u.getEmail());
-            ps.setInt(3, u.getId());
+            ps.setInt(3, u.getStatus());
+            ps.setInt(4, u.getId());
 
             retorno = ps.executeUpdate();
         }
