@@ -37,7 +37,7 @@ public class UsuarioGrupoCadastrar extends javax.swing.JFrame {
         jTextFieldNome = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Cadastrar Grupo de Usuário");
+        setTitle("Cadastrar");
 
         jButtonCadastrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/salvar.png"))); // NOI18N
         jButtonCadastrar.setText("Cadastrar");

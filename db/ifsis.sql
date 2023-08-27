@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 27-Ago-2023 às 00:40
+-- Tempo de geração: 27-Ago-2023 às 23:57
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.2.0
 
@@ -20,6 +20,17 @@ SET time_zone = "+00:00";
 --
 -- Banco de dados: `ifsis`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `produtocategoria`
+--
+
+CREATE TABLE `produtocategoria` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(100) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
 
@@ -69,6 +80,12 @@ INSERT INTO `usuariogrupo` (`id`, `nome`) VALUES
 --
 
 --
+-- Índices para tabela `produtocategoria`
+--
+ALTER TABLE `produtocategoria`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Índices para tabela `usuario`
 --
 ALTER TABLE `usuario`
@@ -83,6 +100,12 @@ ALTER TABLE `usuariogrupo`
 --
 -- AUTO_INCREMENT de tabelas despejadas
 --
+
+--
+-- AUTO_INCREMENT de tabela `produtocategoria`
+--
+ALTER TABLE `produtocategoria`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de tabela `usuario`

@@ -43,7 +43,7 @@ public class UsuarioGerenciar extends javax.swing.JFrame {
         jButtonCarregarTodos = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Gerenciar Usuário");
+        setTitle("Gerenciar");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("Gerenciar Usuário");

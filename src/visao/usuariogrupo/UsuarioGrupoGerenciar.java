@@ -47,7 +47,8 @@ public class UsuarioGrupoGerenciar extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jButtonCarregarTodos = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Gerenciar");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setText("Gerenciar Grupo Usuário");
