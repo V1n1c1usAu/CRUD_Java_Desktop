@@ -1,24 +1,29 @@
-package visao.usuario;
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
+ */
+package visao.usuariogrupo;
 
-import controlador.Conexao;
 import controlador.UsuarioDao;
+import controlador.UsuarioGrupoDao;
 import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.Usuario;
+import modelo.UsuarioGrupo;
+import visao.usuario.UsuarioCadastrar;
 
 /**
  *
- * @author Marcelo Borth
+ * @author aluno
  */
-public class UsuarioGerenciar extends javax.swing.JFrame {
+public class UsuarioGrupoGerenciar extends javax.swing.JFrame {
 
     /**
-     * Creates new form GerenciarUsuario
+     * Creates new form UsuarioGrupoGerenciar
      */
-    public UsuarioGerenciar() {
+    public UsuarioGrupoGerenciar() {
         initComponents();
-
     }
 
     /**
@@ -42,11 +47,10 @@ public class UsuarioGerenciar extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jButtonCarregarTodos = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Gerenciar Usuário");
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setText("Gerenciar Usuário");
+        jLabel1.setText("Gerenciar Grupo Usuário");
 
         jButtonNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/add.png"))); // NOI18N
         jButtonNovo.setText("Novo");
@@ -74,14 +78,14 @@ public class UsuarioGerenciar extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Nome", "Email", "Data Cadastro", "Status"
+                "ID", "Nome", "Data Cadastro"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -98,9 +102,6 @@ public class UsuarioGerenciar extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(jTableDados);
-        if (jTableDados.getColumnModel().getColumnCount() > 0) {
-            jTableDados.getColumnModel().getColumn(0).setMaxWidth(50);
-        }
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -201,9 +202,12 @@ public class UsuarioGerenciar extends javax.swing.JFrame {
 
     private void jButtonNovoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNovoActionPerformed
 
-        new UsuarioCadastrar().setVisible(true);
-
+        new UsuarioGrupoCadastrar().setVisible(true);
     }//GEN-LAST:event_jButtonNovoActionPerformed
+
+    private void jTextFieldPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldPesquisarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldPesquisarActionPerformed
 
     private void jTextFieldPesquisarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextFieldPesquisarKeyReleased
         String campoPesquisa = jTextFieldPesquisar.getText();
@@ -211,7 +215,6 @@ public class UsuarioGerenciar extends javax.swing.JFrame {
         // if (!campoPesquisa.equals("")) {
         this.preencherTabela(campoPesquisa);
         //}
-
     }//GEN-LAST:event_jTextFieldPesquisarKeyReleased
 
     private void preencherTabela(String campoPesquisa) {
@@ -219,17 +222,15 @@ public class UsuarioGerenciar extends javax.swing.JFrame {
         modelo.setNumRows(0);
         try {
 
-            UsuarioDao dao = new UsuarioDao();
-            List<Usuario> lista = dao.buscar(campoPesquisa);
+            UsuarioGrupoDao dao = new UsuarioGrupoDao();
+            List<UsuarioGrupo> lista = dao.buscar(campoPesquisa);
 
-            for (Usuario obj : lista) {
+            for (UsuarioGrupo obj : lista) {
 
                 String[] linha = {
                     obj.getId().toString(),
                     obj.getNome(),
-                    obj.getEmail(),
-                    "",
-                    obj.getStatus().toString()
+                    ""
                 };
                 modelo.addRow(linha);
             }
@@ -241,6 +242,9 @@ public class UsuarioGerenciar extends javax.swing.JFrame {
 
     }
 
+    private void jTableDadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableDadosMouseClicked
+
+    }//GEN-LAST:event_jTableDadosMouseClicked
 
     private void jButtonExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonExcluirActionPerformed
 
@@ -250,7 +254,7 @@ public class UsuarioGerenciar extends javax.swing.JFrame {
             Integer id = Integer.valueOf(jTableDados.getModel().getValueAt(linhaSelecionada, 0).toString());
 
             try {
-                UsuarioDao dao = new UsuarioDao();
+                UsuarioGrupoDao dao = new UsuarioGrupoDao();
                 dao.excluir(id);
 
                 DefaultTableModel modelo = (DefaultTableModel) jTableDados.getModel();
@@ -265,29 +269,15 @@ public class UsuarioGerenciar extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(this, "Selecione um registro para excluir.");
         }
 
-
     }//GEN-LAST:event_jButtonExcluirActionPerformed
 
-    private void alterar() {
-
-    }
-
     private void jButtonAlterarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlterarActionPerformed
-        new UsuarioAlterar().setVisible(true);
-
+        new UsuarioGrupoAlterar().setVisible(true);
     }//GEN-LAST:event_jButtonAlterarActionPerformed
 
     private void jButtonCarregarTodosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCarregarTodosActionPerformed
 
     }//GEN-LAST:event_jButtonCarregarTodosActionPerformed
-
-    private void jTableDadosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableDadosMouseClicked
-
-    }//GEN-LAST:event_jTableDadosMouseClicked
-
-    private void jTextFieldPesquisarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldPesquisarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldPesquisarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -306,21 +296,20 @@ public class UsuarioGerenciar extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(UsuarioGerenciar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UsuarioGrupoGerenciar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(UsuarioGerenciar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UsuarioGrupoGerenciar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(UsuarioGerenciar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UsuarioGrupoGerenciar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(UsuarioGerenciar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(UsuarioGrupoGerenciar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new UsuarioGerenciar().setVisible(true);
+                new UsuarioGrupoGerenciar().setVisible(true);
             }
         });
     }
