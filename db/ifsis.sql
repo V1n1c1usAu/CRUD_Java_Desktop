@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 27-Ago-2023 às 23:57
+-- Tempo de geração: 28-Ago-2023 às 21:09
 -- Versão do servidor: 10.4.27-MariaDB
 -- versão do PHP: 8.2.0
 
@@ -24,6 +24,27 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
+-- Estrutura da tabela `produto`
+--
+
+CREATE TABLE `produto` (
+  `id` int(11) NOT NULL,
+  `nome` varchar(100) NOT NULL,
+  `unidadeDeMedida` varchar(15) DEFAULT NULL,
+  `datacriacao` datetime NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `produto`
+--
+
+INSERT INTO `produto` (`id`, `nome`, `unidadeDeMedida`, `datacriacao`) VALUES
+(1, 'Garrafa', NULL, '2023-08-28 14:35:18'),
+(2, 'Copo', 'Ml', '2023-08-28 14:38:21');
+
+-- --------------------------------------------------------
+
+--
 -- Estrutura da tabela `produtocategoria`
 --
 
@@ -31,6 +52,15 @@ CREATE TABLE `produtocategoria` (
   `id` int(11) NOT NULL,
   `nome` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Extraindo dados da tabela `produtocategoria`
+--
+
+INSERT INTO `produtocategoria` (`id`, `nome`) VALUES
+(1, 'Smartphone'),
+(2, 'Computador'),
+(3, 'Laptop');
 
 -- --------------------------------------------------------
 
@@ -80,6 +110,12 @@ INSERT INTO `usuariogrupo` (`id`, `nome`) VALUES
 --
 
 --
+-- Índices para tabela `produto`
+--
+ALTER TABLE `produto`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Índices para tabela `produtocategoria`
 --
 ALTER TABLE `produtocategoria`
@@ -102,10 +138,16 @@ ALTER TABLE `usuariogrupo`
 --
 
 --
+-- AUTO_INCREMENT de tabela `produto`
+--
+ALTER TABLE `produto`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT de tabela `produtocategoria`
 --
 ALTER TABLE `produtocategoria`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT de tabela `usuario`
