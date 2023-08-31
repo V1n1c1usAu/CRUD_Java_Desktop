@@ -8,19 +8,23 @@ public class Cliente {
 
     private Integer id;
     private String nome;
+    private int tipoCliente;
+    private String cpfCnpj;
+    private String telefone;
     private String email;
-    private String senha;
-    private Integer status;
+    private String observacao;
 
     public Cliente() {
     }
 
-    public Cliente(Integer id, String nome, String email, String senha, Integer status) {
+    public Cliente(Integer id, String nome, Integer tipoCliente, String cpfCnpj, String telefone, String email, String observacao) {
         this.id = id;
         this.nome = nome;
+        this.tipoCliente = tipoCliente;
+        this.cpfCnpj = cpfCnpj;
+        this.telefone = telefone;
         this.email = email;
-        this.senha = senha;
-        this.status = status;
+        this.observacao = observacao;
     }
 
     public Integer getId() {
@@ -39,6 +43,30 @@ public class Cliente {
         this.nome = nome;
     }
 
+    public Integer getTipoCliente() {
+        return tipoCliente;
+    }
+
+    public void setTipoCliente(int tipoCliente) {
+        this.tipoCliente = tipoCliente;
+    }
+
+    public String getCpfCnpj() {
+        return cpfCnpj;
+    }
+
+    public void setCpfCnpj(String cpfCnpj) {
+        this.cpfCnpj = cpfCnpj;
+    }
+
+    public String getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(String telefone) {
+        this.telefone = telefone;
+    }
+
     public String getEmail() {
         return email;
     }
@@ -47,20 +75,12 @@ public class Cliente {
         this.email = email;
     }
 
-    public String getSenha() {
-        return senha;
+    public String getObservacao() {
+        return observacao;
     }
 
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
-
-    public Integer getStatus() {
-        return status;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
+    public void setObservacao(String observacao) {
+        this.observacao = observacao;
     }
 
 }

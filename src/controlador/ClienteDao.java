@@ -14,14 +14,17 @@ public class ClienteDao {
     public int inserir(Cliente u) throws Exception {
         int retorno;
 
-        String sql = "insert into cliente (nome, email, senha)"
-                + "values (?, ?, ?)";
+        String sql = "insert into cliente (nome, tipocliente, cpfcnpj, telefone, email, observacao)"
+                + "values (?, ?, ?, ?, ?, ?)";
 
         Connection conexao = Conexao.getConexao();
         try (PreparedStatement ps = conexao.prepareStatement(sql)) {
             ps.setString(1, u.getNome());
-            ps.setString(2, u.getEmail());
-            ps.setString(3, u.getSenha());
+            ps.setInt(2, u.getTipoCliente());
+            ps.setString(3, u.getCpfCnpj());
+            ps.setString(4, u.getTelefone());
+            ps.setString(5, u.getEmail());
+            ps.setString(6, u.getObservacao());
 
             retorno = ps.executeUpdate();
         }
@@ -52,8 +55,11 @@ public class ClienteDao {
                     Cliente u = new Cliente();
                     u.setId(rs.getInt("id"));
                     u.setNome(rs.getString("nome"));
+                    u.setTipoCliente(rs.getInt("tipocliente"));
+                    u.setCpfCnpj(rs.getString("cpfcnpj"));
+                    u.setTelefone(rs.getString("telefone"));
                     u.setEmail(rs.getString("email"));
-                    u.setStatus(rs.getInt("Status"));
+                    u.setObservacao(rs.getString("observacao"));
 
                     lista.add(u);
                 }
@@ -82,8 +88,11 @@ public class ClienteDao {
                     obj = new Cliente();
                     obj.setId(rs.getInt("id"));
                     obj.setNome(rs.getString("nome"));
+                    obj.setTipoCliente(rs.getInt("tipocliente"));
+                    obj.setCpfCnpj(rs.getString("cpfcnpj"));
+                    obj.setTelefone(rs.getString("telefone"));
                     obj.setEmail(rs.getString("email"));
-                    obj.setStatus(rs.getInt("status"));
+                    obj.setObservacao(rs.getString("observacao"));
                 }
             }
         } catch (Exception e) {
@@ -98,16 +107,22 @@ public class ClienteDao {
 
         String sql = "update cliente"
                 + "      set nome   = ?,"
+                + "          tipocliente  = ?,"
+                + "          cpfcnpj  = ?,"
+                + "          telefone  = ?,"
                 + "          email  = ?,"
-                + "          status = ? "
+                + "          observacao = ? "
                 + "      where   id = ? ";
 
         Connection conexao = Conexao.getConexao();
         try (PreparedStatement ps = conexao.prepareStatement(sql)) {
             ps.setString(1, u.getNome());
-            ps.setString(2, u.getEmail());
-            ps.setInt(3, u.getStatus());
-            ps.setInt(4, u.getId());
+            ps.setInt(2, u.getTipoCliente());
+            ps.setString(3, u.getCpfCnpj());
+            ps.setString(4, u.getTelefone());
+            ps.setString(5, u.getEmail());
+            ps.setString(6, u.getObservacao());
+            ps.setInt(7, u.getId());
 
             retorno = ps.executeUpdate();
         }

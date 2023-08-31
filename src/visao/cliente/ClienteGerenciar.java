@@ -6,14 +6,12 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import modelo.Cliente;
 
-
 /**
  *
  * @author Marcelo Borth
  */
 public class ClienteGerenciar extends javax.swing.JFrame {
 
-    
     public ClienteGerenciar() {
         initComponents();
 
@@ -44,7 +42,7 @@ public class ClienteGerenciar extends javax.swing.JFrame {
         setTitle("Gerenciar");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setText("Gerenciar Usuário");
+        jLabel1.setText("Gerenciar Cliente");
 
         jButtonNovo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/add.png"))); // NOI18N
         jButtonNovo.setText("Novo");
@@ -72,14 +70,14 @@ public class ClienteGerenciar extends javax.swing.JFrame {
 
             },
             new String [] {
-                "ID", "Nome", "Email", "Data Cadastro", "Status"
+                "ID", "Nome", "Tipo Cliente", "Email", "Telefone", "CPF/CNPJ", "Observação"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -225,9 +223,12 @@ public class ClienteGerenciar extends javax.swing.JFrame {
                 String[] linha = {
                     obj.getId().toString(),
                     obj.getNome(),
+                    obj.getTipoCliente() == 0 ? "Pessoa Jurídica" : "Pessoa Fisíca",
+                    obj.getCpfCnpj(),
+                    obj.getTelefone(),
                     obj.getEmail(),
-                    "",
-                    obj.getStatus().toString()
+                    obj.getObservacao()
+
                 };
                 modelo.addRow(linha);
             }

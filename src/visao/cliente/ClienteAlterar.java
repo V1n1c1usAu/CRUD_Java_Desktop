@@ -10,7 +10,6 @@ import modelo.Cliente;
  */
 public class ClienteAlterar extends javax.swing.JFrame {
 
-    
     public ClienteAlterar() {
         initComponents();
     }
@@ -27,51 +26,31 @@ public class ClienteAlterar extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanelDadosGerais = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jTextFieldNome = new javax.swing.JTextField();
-        jTextFieldEmail = new javax.swing.JTextField();
-        jTextFieldID = new javax.swing.JTextField();
         jButtonSalvarDadosGerais = new javax.swing.JButton();
-        jComboBoxStatus = new javax.swing.JComboBox<>();
-        jPanelAlterarSenha = new javax.swing.JPanel();
-        jPanel3 = new javax.swing.JPanel();
-        jLabel5 = new javax.swing.JLabel();
-        jPasswordFieldSenha = new javax.swing.JPasswordField();
-        jLabel6 = new javax.swing.JLabel();
-        jPasswordFieldConfirmacao = new javax.swing.JPasswordField();
-        jButtonAlterarSenha = new javax.swing.JButton();
+        jLabelNome = new javax.swing.JLabel();
+        jTextFieldEmail = new javax.swing.JTextField();
+        jTextFieldNome = new javax.swing.JTextField();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextAreaObs = new javax.swing.JTextArea();
+        jLabelObs = new javax.swing.JLabel();
+        jLabelTipoCliente = new javax.swing.JLabel();
+        jComboBoxTipoCliente = new javax.swing.JComboBox<>();
+        jLabelCpfCnpj = new javax.swing.JLabel();
+        jTextFieldCpfCnpj = new javax.swing.JTextField();
+        jLabelTelefone = new javax.swing.JLabel();
+        jTextFieldTelefone = new javax.swing.JTextField();
+        jLabelEmail = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jTextFieldid = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Alterar");
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Alterar Usuário");
+        jLabel1.setText("Alterar Cliente");
 
-        jLabel2.setText("ID:");
-
-        jLabel3.setText("Nome:");
-
-        jLabel4.setText("Email:");
-
-        jTextFieldEmail.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldEmailActionPerformed(evt);
-            }
-        });
-
-        jTextFieldID.addFocusListener(new java.awt.event.FocusAdapter() {
-            public void focusLost(java.awt.event.FocusEvent evt) {
-                jTextFieldIDFocusLost(evt);
-            }
-        });
-        jTextFieldID.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldIDActionPerformed(evt);
-            }
-        });
+        jPanelDadosGerais.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jButtonSalvarDadosGerais.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/salvar.png"))); // NOI18N
         jButtonSalvarDadosGerais.setText("Salvar");
@@ -80,130 +59,63 @@ public class ClienteAlterar extends javax.swing.JFrame {
                 jButtonSalvarDadosGeraisActionPerformed(evt);
             }
         });
+        jPanelDadosGerais.add(jButtonSalvarDadosGerais, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 350, -1, -1));
 
-        jComboBoxStatus.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ATIVO", "DESATIVADO" }));
+        jLabelNome.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabelNome.setText("Nome:");
+        jPanelDadosGerais.add(jLabelNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 50, 37, 20));
+        jPanelDadosGerais.add(jTextFieldEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 170, 200, -1));
+        jPanelDadosGerais.add(jTextFieldNome, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 50, 200, -1));
 
-        javax.swing.GroupLayout jPanelDadosGeraisLayout = new javax.swing.GroupLayout(jPanelDadosGerais);
-        jPanelDadosGerais.setLayout(jPanelDadosGeraisLayout);
-        jPanelDadosGeraisLayout.setHorizontalGroup(
-            jPanelDadosGeraisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelDadosGeraisLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanelDadosGeraisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelDadosGeraisLayout.createSequentialGroup()
-                        .addGroup(jPanelDadosGeraisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(jPanelDadosGeraisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanelDadosGeraisLayout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanelDadosGeraisLayout.createSequentialGroup()
-                                .addComponent(jTextFieldID, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(0, 0, Short.MAX_VALUE))))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelDadosGeraisLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(jButtonSalvarDadosGerais))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelDadosGeraisLayout.createSequentialGroup()
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGroup(jPanelDadosGeraisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jComboBoxStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 325, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addContainerGap())
-        );
-        jPanelDadosGeraisLayout.setVerticalGroup(
-            jPanelDadosGeraisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelDadosGeraisLayout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(jPanelDadosGeraisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextFieldID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanelDadosGeraisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanelDadosGeraisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextFieldEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jComboBoxStatus, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
-                .addComponent(jButtonSalvarDadosGerais)
-                .addContainerGap())
-        );
+        jTextAreaObs.setColumns(20);
+        jTextAreaObs.setRows(5);
+        jScrollPane1.setViewportView(jTextAreaObs);
 
-        jTabbedPane1.addTab("Dados Gerais", jPanelDadosGerais);
+        jPanelDadosGerais.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 250, 97));
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Segurança", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11), new java.awt.Color(255, 51, 51))); // NOI18N
+        jLabelObs.setText("Observação:");
+        jPanelDadosGerais.add(jLabelObs, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 210, -1, -1));
 
-        jLabel5.setText("Senha:");
+        jLabelTipoCliente.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabelTipoCliente.setText("Tipo:");
+        jPanelDadosGerais.add(jLabelTipoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 80, 30, -1));
 
-        jLabel6.setText("Confirmar Senha:");
+        jComboBoxTipoCliente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Pessoa Jurídica", "Pessoa Física" }));
+        jPanelDadosGerais.add(jComboBoxTipoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 150, -1));
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPasswordFieldSenha)
-                    .addComponent(jPasswordFieldConfirmacao))
-                .addContainerGap())
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel5)
-                    .addComponent(jPasswordFieldSenha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(15, 15, 15)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jPasswordFieldConfirmacao, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(21, Short.MAX_VALUE))
-        );
+        jLabelCpfCnpj.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabelCpfCnpj.setText("CNPJ:");
+        jPanelDadosGerais.add(jLabelCpfCnpj, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, 20));
 
-        jButtonAlterarSenha.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/salvar.png"))); // NOI18N
-        jButtonAlterarSenha.setText("Alterar Senha");
-        jButtonAlterarSenha.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldCpfCnpj.setToolTipText("");
+        jTextFieldCpfCnpj.setName(""); // NOI18N
+        jTextFieldCpfCnpj.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAlterarSenhaActionPerformed(evt);
+                jTextFieldCpfCnpjActionPerformed(evt);
             }
         });
+        jPanelDadosGerais.add(jTextFieldCpfCnpj, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 110, 200, -1));
 
-        javax.swing.GroupLayout jPanelAlterarSenhaLayout = new javax.swing.GroupLayout(jPanelAlterarSenha);
-        jPanelAlterarSenha.setLayout(jPanelAlterarSenhaLayout);
-        jPanelAlterarSenhaLayout.setHorizontalGroup(
-            jPanelAlterarSenhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelAlterarSenhaLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanelAlterarSenhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelAlterarSenhaLayout.createSequentialGroup()
-                        .addGap(0, 243, Short.MAX_VALUE)
-                        .addComponent(jButtonAlterarSenha)))
-                .addContainerGap())
-        );
-        jPanelAlterarSenhaLayout.setVerticalGroup(
-            jPanelAlterarSenhaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanelAlterarSenhaLayout.createSequentialGroup()
-                .addContainerGap(31, Short.MAX_VALUE)
-                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButtonAlterarSenha)
-                .addContainerGap())
-        );
+        jLabelTelefone.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabelTelefone.setText("Telefone:");
+        jPanelDadosGerais.add(jLabelTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 140, 50, 20));
+        jPanelDadosGerais.add(jTextFieldTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 140, 200, -1));
 
-        jTabbedPane1.addTab("Alterar Senha", jPanelAlterarSenha);
+        jLabelEmail.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabelEmail.setText("Email:");
+        jPanelDadosGerais.add(jLabelEmail, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 170, 50, 20));
+
+        jLabel2.setText("ID:");
+        jPanelDadosGerais.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+
+        jTextFieldid.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldidActionPerformed(evt);
+            }
+        });
+        jPanelDadosGerais.add(jTextFieldid, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 10, 93, -1));
+
+        jTabbedPane1.addTab("Dados Gerais", jPanelDadosGerais);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -212,9 +124,8 @@ public class ClienteAlterar extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTabbedPane1)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
+                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 314, Short.MAX_VALUE)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -230,17 +141,13 @@ public class ClienteAlterar extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextFieldIDFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldIDFocusLost
-        String id = jTextFieldID.getText();
-
-        if (!id.trim().equals("")) {
-            this.mostrarCliente(id);
-        } else {
-            jTextFieldID.setText("");
-            jTextFieldNome.setText("");
-            jTextFieldEmail.setText("");
-        }
-    }//GEN-LAST:event_jTextFieldIDFocusLost
+    private void setarValoresZerados() {
+        jTextFieldNome.setText("");
+        jTextFieldEmail.setText("");
+        jComboBoxTipoCliente.setSelectedItem(0);
+        jTextFieldCpfCnpj.setText("");
+        jTextFieldTelefone.setText("");
+    }
 
     public void mostrarCliente(String idTexto) {
         try {
@@ -252,50 +159,41 @@ public class ClienteAlterar extends javax.swing.JFrame {
             if (obj != null) {
 
                 //Recupera o status salvo no banco
-                int status = recuperaStatus(obj);
-
                 //Preenche os dados do formulário
                 jTextFieldNome.setText(obj.getNome());
                 jTextFieldEmail.setText(obj.getEmail());
-                jComboBoxStatus.setSelectedIndex(status);
+                jComboBoxTipoCliente.setSelectedIndex(obj.getTipoCliente());
+                jTextFieldCpfCnpj.setText(obj.getCpfCnpj());
+                jTextFieldTelefone.setText(obj.getTelefone());
+
+                jTextAreaObs.setText(obj.getObservacao());
+
             } else {
                 JOptionPane.showMessageDialog(this, "Registro não encontrado.");
-                jTextFieldID.setText("");
-                jTextFieldNome.setText("");
-                jTextFieldEmail.setText("");
-                jTextFieldID.requestFocus();
+
+                setarValoresZerados();
+
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Erro ao consultar registro.");
-            jTextFieldID.setText("");
-            jTextFieldNome.setText("");
-            jTextFieldEmail.setText("");
-            jTextFieldID.requestFocus();
+
+            setarValoresZerados();
+
         }
     }
 
-    public int recuperaStatus(Cliente obj) {
-        int status;
-        if (obj.getStatus() == 1) {
-            status = 0;
-        } else {
-            status = 1;
-        }
-        return status;
-    }
 
     private void jButtonSalvarDadosGeraisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalvarDadosGeraisActionPerformed
-        //Validações
-        // - Campos obrigatórios
-        // - Email correto
 
-        Integer id = Integer.valueOf(jTextFieldID.getText());
+        Integer id = Integer.valueOf(jTextFieldid.getText());
         String nome = jTextFieldNome.getText();
+        Integer tipoCliente = (jComboBoxTipoCliente.getSelectedIndex());
+        String cpfCnpj = jTextFieldCpfCnpj.getText();
+        String telefone = jTextFieldTelefone.getText();
         String email = jTextFieldEmail.getText();
+        String observacao = jTextAreaObs.getText();
 
-        Integer status = AlteraStatus();
-
-        Cliente u = new Cliente(id, nome, email, null, status);
+        Cliente u = new Cliente(id, nome, tipoCliente, cpfCnpj, telefone, email, observacao);
 
         try {
             ClienteDao dao = new ClienteDao();
@@ -308,29 +206,31 @@ public class ClienteAlterar extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButtonSalvarDadosGeraisActionPerformed
 
-    public Integer AlteraStatus() {
-        Integer status;
-
-        if (jComboBoxStatus.getSelectedItem().equals("ATIVO")) {
-            status = 1;
-        } else {
-            status = 0;
-        }
-        return status;
-    }
 
     private void jButtonAlterarSenhaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAlterarSenhaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonAlterarSenhaActionPerformed
 
-    private void jTextFieldEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldEmailActionPerformed
+    private void jTextFieldCpfCnpjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCpfCnpjActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldEmailActionPerformed
+    }//GEN-LAST:event_jTextFieldCpfCnpjActionPerformed
 
-    private void jTextFieldIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldIDActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldIDActionPerformed
+    private void jTextFieldidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldidActionPerformed
 
+        String id = jTextFieldid.getText();
+
+        if (!id.trim().equals("")) {
+            this.mostrarCliente(id);
+        } else {
+            setarValoresZerados();
+
+
+    }//GEN-LAST:event_jTextFieldidActionPerformed
+    }
+
+    /**
+     * @param args the command line arguments
+     */
     /**
      * @param args the command line arguments
      */
@@ -370,23 +270,24 @@ public class ClienteAlterar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButtonAlterarSenha;
     private javax.swing.JButton jButtonSalvarDadosGerais;
-    private javax.swing.JComboBox<String> jComboBoxStatus;
+    private javax.swing.JComboBox<String> jComboBoxTipoCliente;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanelAlterarSenha;
+    private javax.swing.JLabel jLabelCpfCnpj;
+    private javax.swing.JLabel jLabelEmail;
+    private javax.swing.JLabel jLabelNome;
+    private javax.swing.JLabel jLabelObs;
+    private javax.swing.JLabel jLabelTelefone;
+    private javax.swing.JLabel jLabelTipoCliente;
     private javax.swing.JPanel jPanelDadosGerais;
-    private javax.swing.JPasswordField jPasswordFieldConfirmacao;
-    private javax.swing.JPasswordField jPasswordFieldSenha;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTextArea jTextAreaObs;
+    private javax.swing.JTextField jTextFieldCpfCnpj;
     private javax.swing.JTextField jTextFieldEmail;
-    private javax.swing.JTextField jTextFieldID;
     private javax.swing.JTextField jTextFieldNome;
+    private javax.swing.JTextField jTextFieldTelefone;
+    private javax.swing.JTextField jTextFieldid;
     // End of variables declaration//GEN-END:variables
 }
