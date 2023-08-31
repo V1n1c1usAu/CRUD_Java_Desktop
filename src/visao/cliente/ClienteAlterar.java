@@ -84,8 +84,8 @@ public class ClienteAlterar extends javax.swing.JFrame {
         jPanelDadosGerais.add(jComboBoxTipoCliente, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 80, 150, -1));
 
         jLabelCpfCnpj.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabelCpfCnpj.setText("CNPJ:");
-        jPanelDadosGerais.add(jLabelCpfCnpj, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 110, -1, 20));
+        jLabelCpfCnpj.setText("CPF/CNPJ:");
+        jPanelDadosGerais.add(jLabelCpfCnpj, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 110, -1, 20));
 
         jTextFieldCpfCnpj.setToolTipText("");
         jTextFieldCpfCnpj.setName(""); // NOI18N
@@ -124,7 +124,7 @@ public class ClienteAlterar extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 314, Short.MAX_VALUE)
+                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 276, Short.MAX_VALUE)
                     .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
@@ -193,6 +193,38 @@ public class ClienteAlterar extends javax.swing.JFrame {
         String email = jTextFieldEmail.getText();
         String observacao = jTextAreaObs.getText();
 
+        if (id == null) {
+            JOptionPane.showMessageDialog(this, "Informe o ID.");
+            jTextFieldNome.requestFocus();
+            return;
+        }
+
+        if (nome.equals("")) {
+            JOptionPane.showMessageDialog(this, "Informe o nome.");
+            jTextFieldNome.requestFocus();
+            return;
+        }
+        if (tipoCliente.equals(null)) {
+            JOptionPane.showMessageDialog(this, "Informe o tipo cliente.");
+            jTextFieldNome.requestFocus();
+            return;
+        }
+        if (cpfCnpj.equals("") || cpfCnpj.length() < 11) {
+            JOptionPane.showMessageDialog(this, "Informe o CPF/CNPJ.");
+            jTextFieldNome.requestFocus();
+            return;
+        }
+        if (telefone.equals("")) {
+            JOptionPane.showMessageDialog(this, "Informe o telefone.");
+            jTextFieldNome.requestFocus();
+            return;
+        }
+        if (email.equals("")) {
+            JOptionPane.showMessageDialog(this, "Informe o email.");
+            jTextFieldNome.requestFocus();
+            return;
+        }
+
         Cliente u = new Cliente(id, nome, tipoCliente, cpfCnpj, telefone, email, observacao);
 
         try {
@@ -211,10 +243,6 @@ public class ClienteAlterar extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonAlterarSenhaActionPerformed
 
-    private void jTextFieldCpfCnpjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCpfCnpjActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldCpfCnpjActionPerformed
-
     private void jTextFieldidActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldidActionPerformed
 
         String id = jTextFieldid.getText();
@@ -224,9 +252,12 @@ public class ClienteAlterar extends javax.swing.JFrame {
         } else {
             setarValoresZerados();
 
-
+        }
     }//GEN-LAST:event_jTextFieldidActionPerformed
-    }
+
+    private void jTextFieldCpfCnpjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCpfCnpjActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldCpfCnpjActionPerformed
 
     /**
      * @param args the command line arguments

@@ -4,10 +4,8 @@
  */
 package visao.usuariogrupo;
 
-import controlador.UsuarioDao;
 import controlador.UsuarioGrupoDao;
 import javax.swing.JOptionPane;
-import modelo.Usuario;
 import modelo.UsuarioGrupo;
 
 /**
@@ -143,6 +141,15 @@ public class UsuarioGrupoAlterar extends javax.swing.JFrame {
 
         Integer id = Integer.valueOf(jTextFieldID.getText());
         String nome = jTextFieldNome.getText();
+
+        if (id == null) {
+            JOptionPane.showMessageDialog(this, "Informe o ID.");
+            return;
+        }
+        if (nome.equals("")) {
+            JOptionPane.showMessageDialog(this, "Informe o nome.");
+            return;
+        }
 
         UsuarioGrupo u = new UsuarioGrupo(id, nome);
 

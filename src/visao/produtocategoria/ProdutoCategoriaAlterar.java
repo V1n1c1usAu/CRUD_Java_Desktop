@@ -14,7 +14,6 @@ import modelo.ProdutoCategoria;
  */
 public class ProdutoCategoriaAlterar extends javax.swing.JFrame {
 
-  
     public ProdutoCategoriaAlterar() {
         initComponents();
     }
@@ -139,6 +138,18 @@ public class ProdutoCategoriaAlterar extends javax.swing.JFrame {
 
         Integer id = Integer.valueOf(jTextFieldID.getText());
         String nome = jTextFieldNome.getText();
+
+        if (id == null) {
+            JOptionPane.showMessageDialog(this, "Informe o ID.");
+
+            return;
+        }
+
+        if (nome.equals("")) {
+            JOptionPane.showMessageDialog(this, "Informe o nome.");
+
+            return;
+        }
 
         ProdutoCategoria u = new ProdutoCategoria(id, nome);
 

@@ -14,7 +14,6 @@ import modelo.ProdutoCategoria;
  */
 public class ProdutoCategoriaCadastrar extends javax.swing.JFrame {
 
-   
     public ProdutoCategoriaCadastrar() {
         initComponents();
     }
@@ -108,11 +107,9 @@ public class ProdutoCategoriaCadastrar extends javax.swing.JFrame {
         //Validações
         if (nome.equals("")) {
             JOptionPane.showMessageDialog(this, "Informe o nome.");
-            jTextFieldNome.requestFocus();
+
             return;
         }
-
-        //Verificar se email é válido
         ProdutoCategoria u = new ProdutoCategoria(null, nome);
 
         try {

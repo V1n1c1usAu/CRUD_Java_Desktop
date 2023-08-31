@@ -295,6 +295,23 @@ public class UsuarioAlterar extends javax.swing.JFrame {
         String nome = jTextFieldNome.getText();
         String email = jTextFieldEmail.getText();
 
+        if (id == null) {
+            JOptionPane.showMessageDialog(this, "Informe o ID.");
+        
+            return;
+        }
+
+        if (nome.equals("")) {
+            JOptionPane.showMessageDialog(this, "Informe o nome.");
+           
+            return;
+        }
+        if (email.equals("")) {
+            JOptionPane.showMessageDialog(this, "Informe o email.");
+      
+            return;
+        }
+
         Integer status = AlteraStatus();
 
         Usuario u = new Usuario(id, nome, email, null, status);

@@ -15,7 +15,7 @@ import modelo.ProdutoCategoria;
  * @author Vini
  */
 public class ProdutoAlterar extends javax.swing.JFrame {
-    
+
     public ProdutoAlterar() {
         initComponents();
     }
@@ -154,13 +154,30 @@ public class ProdutoAlterar extends javax.swing.JFrame {
         Integer id = Integer.valueOf(jTextFieldID.getText());
         String nome = jTextFieldNome.getText();
         String unidadeDeMedida = jTextFieldUnidade.getText().trim();
-        
+
+        if (id == null) {
+            JOptionPane.showMessageDialog(this, "Informe o ID.");
+
+            return;
+        }
+
+        if (nome.equals("")) {
+            JOptionPane.showMessageDialog(this, "Informe o nome.");
+
+            return;
+        }
+        if (unidadeDeMedida.equals("")) {
+            JOptionPane.showMessageDialog(this, "Informe o email.");
+
+            return;
+        }
+
         Produto u = new Produto(id, nome, unidadeDeMedida, null);
-        
+
         try {
             ProdutoDao dao = new ProdutoDao();
             dao.atualizar(u);
-            
+
             JOptionPane.showMessageDialog(this, "Registro atualizado com sucesso.");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Erro: " + e.getMessage());
@@ -173,41 +190,41 @@ public class ProdutoAlterar extends javax.swing.JFrame {
 
     private void jTextFieldIDFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jTextFieldIDFocusLost
         String id = jTextFieldID.getText();
-        
+
         if (!id.trim().equals("")) {
             this.mostrarProdutoCategoria(id);
         } else {
             jTextFieldID.setText("");
             jTextFieldNome.setText("");
             jTextFieldUnidade.setText("");
-            
+
         }
     }//GEN-LAST:event_jTextFieldIDFocusLost
-    
+
     public void mostrarProdutoCategoria(String idTexto) {
         try {
             Integer id = Integer.valueOf(idTexto);
-            
+
             ProdutoCategoriaDao dao = new ProdutoCategoriaDao();
             ProdutoCategoria obj = dao.getProdutoCategoria(id);
-            
+
             if (obj != null) {
 
                 //Preenche os dados do formulário
                 jTextFieldNome.setText(obj.getNome());
-                
+
             } else {
                 JOptionPane.showMessageDialog(this, "Registro não encontrado.");
                 jTextFieldID.setText("");
                 jTextFieldNome.setText("");
-                
+
                 jTextFieldID.requestFocus();
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Erro ao consultar registro.");
             jTextFieldID.setText("");
             jTextFieldNome.setText("");
-            
+
             jTextFieldID.requestFocus();
         }
     }

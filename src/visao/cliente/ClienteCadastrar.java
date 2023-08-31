@@ -124,12 +124,27 @@ public class ClienteCadastrar extends javax.swing.JFrame {
         //Validações
         if (nome.equals("")) {
             JOptionPane.showMessageDialog(this, "Informe o nome.");
-            jTextFieldNome.requestFocus();
+         
+            return;
+        }
+        if (tipoCliente == null) {
+            JOptionPane.showMessageDialog(this, "Informe o tipo cliente.");
+       
+            return;
+        }
+        if (nome.equals("")) {
+            JOptionPane.showMessageDialog(this, "Informe o nome.");
+         
             return;
         }
         if (email.equals("")) {
             JOptionPane.showMessageDialog(this, "Informe o email.");
-            jTextFieldEmail.requestFocus();
+         
+            return;
+        }
+        if (nome.equals("")) {
+            JOptionPane.showMessageDialog(this, "Informe o nome.");
+           
             return;
         }
 

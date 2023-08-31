@@ -110,7 +110,6 @@ public class UsuarioGrupoCadastrar extends javax.swing.JFrame {
         //Validações
         if (nome.equals("")) {
             JOptionPane.showMessageDialog(this, "Informe o nome.");
-            jTextFieldNome.requestFocus();
             return;
         }
 

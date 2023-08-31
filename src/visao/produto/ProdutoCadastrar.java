@@ -33,7 +33,7 @@ public class ProdutoCadastrar extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jTextFieldNome = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        jTextFieldNome1 = new javax.swing.JTextField();
+        jTextFieldUnidadeMedida = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastrar");
@@ -86,7 +86,7 @@ public class ProdutoCadastrar extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jLabel3)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jTextFieldNome1, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addComponent(jTextFieldUnidadeMedida, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -102,7 +102,7 @@ public class ProdutoCadastrar extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(jTextFieldNome1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jTextFieldUnidadeMedida, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 41, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonCadastrar)
@@ -117,7 +117,18 @@ public class ProdutoCadastrar extends javax.swing.JFrame {
     private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
 
         String nome = jTextFieldNome.getText().trim();
-        String unidadeDeMedida = jTextFieldNome1.getText().trim();
+        String unidadeDeMedida = jTextFieldUnidadeMedida.getText().trim();
+
+        if (nome.equals("")) {
+            JOptionPane.showMessageDialog(this, "Informe o nome.");
+
+            return;
+        }
+        if (unidadeDeMedida.equals("")) {
+            JOptionPane.showMessageDialog(this, "Informe o email.");
+
+            return;
+        }
 
         //Validação de nome
         if (nome.equals("")) {
@@ -205,6 +216,6 @@ public class ProdutoCadastrar extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JTextField jTextFieldNome;
-    private javax.swing.JTextField jTextFieldNome1;
+    private javax.swing.JTextField jTextFieldUnidadeMedida;
     // End of variables declaration//GEN-END:variables
 }

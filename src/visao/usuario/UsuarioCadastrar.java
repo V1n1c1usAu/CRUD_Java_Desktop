@@ -133,53 +133,52 @@ public class UsuarioCadastrar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCadastrarActionPerformed
-        
+
         String nome = jTextFieldNome.getText();
         String email = jTextFieldEmail.getText();
         String senha = new String(jPasswordFieldSenha.getPassword());
         String confirmacao = new String(jPasswordFieldConfirmacao.getPassword());
-        
+
         //Validações
         if (nome.equals("")) {
             JOptionPane.showMessageDialog(this, "Informe o nome.");
-            jTextFieldNome.requestFocus();
+
             return;
         }
         if (email.equals("")) {
             JOptionPane.showMessageDialog(this, "Informe o email.");
-            jTextFieldEmail.requestFocus();
+
             return;
         }
         if (senha.equals("")) {
             JOptionPane.showMessageDialog(this, "Informe a senha.");
-            jPasswordFieldSenha.requestFocus();
+
             return;
         }
         if (confirmacao.equals("")) {
             JOptionPane.showMessageDialog(this, "Informe a confirmação de senha.");
-            jPasswordFieldConfirmacao.requestFocus();
+
             return;
         }
         if (!senha.equals(confirmacao)) {
             JOptionPane.showMessageDialog(this, "As senhas não conferem.");
             jPasswordFieldSenha.setText("");
             jPasswordFieldConfirmacao.setText("");
-            jPasswordFieldSenha.requestFocus();
+
             return;
         }
-        //Verificar se email é válido
-        
+
         Usuario u = new Usuario(null, nome, email, senha, null);
-        
+
         try {
             UsuarioDao dao = new UsuarioDao();
             dao.inserir(u);
-            
+
             JOptionPane.showMessageDialog(this, "Registro inserido com sucesso.");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(this, "Erro: " + e.getMessage());
         }
-        
+
     }//GEN-LAST:event_jButtonCadastrarActionPerformed
 
     /**
