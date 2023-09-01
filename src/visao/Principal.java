@@ -4,7 +4,11 @@
  */
 package visao;
 
+import visao.cliente.ClienteGerenciar;
+import visao.produto.ProdutoGerenciar;
+import visao.produtocategoria.ProdutoCategoriaGerenciar;
 import visao.usuario.UsuarioGerenciar;
+import visao.usuariogrupo.UsuarioGrupoGerenciar;
 
 /**
  *
@@ -30,38 +34,58 @@ public class Principal extends javax.swing.JFrame {
 
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
+        jMenuItemUsuario = new javax.swing.JMenuItem();
+        jMenuItemGrupoUsuario = new javax.swing.JMenuItem();
+        jMenuItemCliente = new javax.swing.JMenuItem();
+        jMenuItemProduto = new javax.swing.JMenuItem();
+        jMenuItemCategoriaProduto = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("MRB Sistemas");
 
         jMenu1.setText("Gerenciar");
 
-        jMenuItem1.setText("Usuário");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        jMenuItemUsuario.setText("Usuário");
+        jMenuItemUsuario.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                jMenuItemUsuarioActionPerformed(evt);
             }
         });
-        jMenu1.add(jMenuItem1);
+        jMenu1.add(jMenuItemUsuario);
 
-        jMenuItem2.setText("Grupo Usuário");
-        jMenu1.add(jMenuItem2);
+        jMenuItemGrupoUsuario.setText("Grupo Usuário");
+        jMenuItemGrupoUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemGrupoUsuarioActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItemGrupoUsuario);
 
-        jMenuItem3.setText("Cliente");
-        jMenu1.add(jMenuItem3);
+        jMenuItemCliente.setText("Cliente");
+        jMenuItemCliente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemClienteActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItemCliente);
 
-        jMenuItem4.setText("Produto");
-        jMenu1.add(jMenuItem4);
+        jMenuItemProduto.setText("Produto");
+        jMenuItemProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemProdutoActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItemProduto);
 
-        jMenuItem5.setText("Categoria do Produto");
-        jMenuItem5.setToolTipText("");
-        jMenu1.add(jMenuItem5);
+        jMenuItemCategoriaProduto.setText("Categoria do Produto");
+        jMenuItemCategoriaProduto.setToolTipText("");
+        jMenuItemCategoriaProduto.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemCategoriaProdutoActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItemCategoriaProduto);
 
         jMenuBar1.add(jMenu1);
 
@@ -74,8 +98,24 @@ public class Principal extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        new UsuarioGerenciar().setVisible(true);    }//GEN-LAST:event_jMenuItem1ActionPerformed
+    private void jMenuItemUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemUsuarioActionPerformed
+        new UsuarioGerenciar().setVisible(true);    }//GEN-LAST:event_jMenuItemUsuarioActionPerformed
+
+    private void jMenuItemGrupoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemGrupoUsuarioActionPerformed
+        new UsuarioGrupoGerenciar().setVisible(true);         // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItemGrupoUsuarioActionPerformed
+
+    private void jMenuItemCategoriaProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemCategoriaProdutoActionPerformed
+        new ProdutoCategoriaGerenciar().setVisible(true);         // TODO add your handling code here:
+    }//GEN-LAST:event_jMenuItemCategoriaProdutoActionPerformed
+
+    private void jMenuItemClienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemClienteActionPerformed
+        new ClienteGerenciar().setVisible(true);
+    }//GEN-LAST:event_jMenuItemClienteActionPerformed
+
+    private void jMenuItemProdutoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemProdutoActionPerformed
+        new ProdutoGerenciar().setVisible(true);
+    }//GEN-LAST:event_jMenuItemProdutoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -116,10 +156,10 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
-    private javax.swing.JMenuItem jMenuItem2;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
+    private javax.swing.JMenuItem jMenuItemCategoriaProduto;
+    private javax.swing.JMenuItem jMenuItemCliente;
+    private javax.swing.JMenuItem jMenuItemGrupoUsuario;
+    private javax.swing.JMenuItem jMenuItemProduto;
+    private javax.swing.JMenuItem jMenuItemUsuario;
     // End of variables declaration//GEN-END:variables
 }
