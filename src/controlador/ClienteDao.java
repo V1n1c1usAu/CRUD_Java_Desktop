@@ -7,16 +7,27 @@ import modelo.Cliente;
 
 /**
  *
- * @author Marcelo Rafael Borth
+ * @author Vinicius Augusto
  */
 public class ClienteDao {
 
+    /**
+     * Insere um objeto no banco.
+     *
+     * @param u
+     * @return
+     * @throws Exception
+     */
     public int inserir(Cliente u) throws Exception {
+
         int retorno;
 
         String sql = "insert into cliente (nome, tipocliente, cpfcnpj, telefone, email, observacao)"
                 + "values (?, ?, ?, ?, ?, ?)";
 
+        /**
+         * Realiza a conexão no banco e aplica os valores recebidos.
+         */
         Connection conexao = Conexao.getConexao();
         try (PreparedStatement ps = conexao.prepareStatement(sql)) {
             ps.setString(1, u.getNome());
@@ -32,14 +43,21 @@ public class ClienteDao {
         return retorno;
     }
 
+    /**
+     * Recebe um nome e retorna uma lista.
+     *
+     * @param nome
+     * @return
+     * @throws Exception
+     */
     public List<Cliente> buscar(String nome) throws Exception {
-        Connection conexao = Conexao.getConexao();
-        String sql = "select * from cliente";
 
+        Connection conexao = Conexao.getConexao();
+
+        String sql = "select * from cliente";
         if (!nome.equals("")) {
             sql += " where nome like ?";
         }
-
         sql += " order by nome";
 
         List<Cliente> lista = new ArrayList<>();
@@ -50,7 +68,9 @@ public class ClienteDao {
             }
 
             try (ResultSet rs = ps.executeQuery()) {
-
+                /**
+                 * Aplica os valores recebidos no objeto u.
+                 */
                 while (rs.next()) {
                     Cliente u = new Cliente();
                     u.setId(rs.getInt("id"));
@@ -73,6 +93,13 @@ public class ClienteDao {
         return lista;
     }
 
+    /**
+     * Função realiza a busca de um único objeto.
+     *
+     * @param id
+     * @return
+     * @throws Exception
+     */
     public Cliente getCliente(int id) throws Exception {
         Connection conexao = Conexao.getConexao();
         String sql = "select * from cliente where id = ?";
@@ -80,7 +107,7 @@ public class ClienteDao {
         Cliente obj = null;
 
         try (PreparedStatement ps = conexao.prepareStatement(sql)) {
-            //Parâmetros da SQL (pode ser mais de 1 param)
+
             ps.setInt(1, id);
 
             try (ResultSet rs = ps.executeQuery()) {
@@ -102,6 +129,13 @@ public class ClienteDao {
         return obj;
     }
 
+    /**
+     * Realiza UPDATE de objeto.
+     *
+     * @param u
+     * @return
+     * @throws Exception
+     */
     public int atualizar(Cliente u) throws Exception {
         int retorno;
 
@@ -130,8 +164,12 @@ public class ClienteDao {
         return retorno;
     }
 
+    /**
+     * Realiza o DELETE de objeto.
+     * @param id
+     * @throws Exception 
+     */
     public void excluir(Integer id) throws Exception {
-        int retorno;
 
         String sql = "DELETE FROM cliente WHERE id    = ?";
 
@@ -140,7 +178,7 @@ public class ClienteDao {
 
             ps.setInt(1, id);
 
-            retorno = ps.executeUpdate();
+            ps.executeUpdate();
         }
 
     }

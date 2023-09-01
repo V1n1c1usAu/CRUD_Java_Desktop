@@ -2,16 +2,21 @@ package controlador;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 
 /**
- * Classe Conexao usando o padrão de projeto Singleton
  *
- * @author Marcelo Rafael Borth
+ *
+ * @author Vinicius Augusto
  */
 public class Conexao {
 
     private static Connection conexao;
 
+    /**
+     * Configura as var. do banco.
+     * @throws Exception 
+     */
     private Conexao() throws Exception {
         try {
             String driver = "com.mysql.cj.jdbc.Driver";
@@ -23,11 +28,16 @@ public class Conexao {
             conexao = DriverManager.getConnection(url, usuario, senha);
             conexao.setAutoCommit(true);
 
-        } catch (Exception e) {
+        } catch (ClassNotFoundException | SQLException e) {
             throw e;
         }
     }
 
+    /**
+     * Pega a conexão do banco.
+     * @return
+     * @throws Exception 
+     */
     public static Connection getConexao() throws Exception {
         if (conexao == null) {
             new Conexao();

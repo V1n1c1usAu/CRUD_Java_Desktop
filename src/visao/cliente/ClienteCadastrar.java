@@ -31,14 +31,14 @@ public class ClienteCadastrar extends javax.swing.JFrame {
         jLabelTipoCliente = new javax.swing.JLabel();
         jComboBoxTipoCliente = new javax.swing.JComboBox<>();
         jLabelCpfCnpj = new javax.swing.JLabel();
-        jTextFieldCpfCnpj = new javax.swing.JTextField();
         jLabelTelefone = new javax.swing.JLabel();
-        jTextFieldTelefone = new javax.swing.JTextField();
         jLabelEmail = new javax.swing.JLabel();
         jTextFieldEmail = new javax.swing.JTextField();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTextAreaObs = new javax.swing.JTextArea();
         jLabelObs = new javax.swing.JLabel();
+        jFormattedTextFieldCpfCnpj = new javax.swing.JFormattedTextField();
+        jFormattedTextFieldTelefone = new javax.swing.JFormattedTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Cadastrar");
@@ -67,6 +67,11 @@ public class ClienteCadastrar extends javax.swing.JFrame {
 
         jButtonLimpar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/limpar.png"))); // NOI18N
         jButtonLimpar.setText("Limpar");
+        jButtonLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonLimparActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButtonLimpar, new org.netbeans.lib.awtextra.AbsoluteConstraints(182, 360, 130, -1));
 
         jLabelTipoCliente.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
@@ -80,19 +85,9 @@ public class ClienteCadastrar extends javax.swing.JFrame {
         jLabelCpfCnpj.setText("CPF/CNPJ:");
         getContentPane().add(jLabelCpfCnpj, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 120, -1, 20));
 
-        jTextFieldCpfCnpj.setToolTipText("");
-        jTextFieldCpfCnpj.setName(""); // NOI18N
-        jTextFieldCpfCnpj.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldCpfCnpjActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jTextFieldCpfCnpj, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, 220, -1));
-
         jLabelTelefone.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabelTelefone.setText("Telefone:");
         getContentPane().add(jLabelTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 150, 60, 20));
-        getContentPane().add(jTextFieldTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, 220, -1));
 
         jLabelEmail.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
         jLabelEmail.setText("Email:");
@@ -108,6 +103,25 @@ public class ClienteCadastrar extends javax.swing.JFrame {
         jLabelObs.setText("Observação:");
         getContentPane().add(jLabelObs, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, -1, -1));
 
+        try {
+            jFormattedTextFieldCpfCnpj.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("###-###.###-##")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        jFormattedTextFieldCpfCnpj.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jFormattedTextFieldCpfCnpjActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jFormattedTextFieldCpfCnpj, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, 150, -1));
+
+        try {
+            jFormattedTextFieldTelefone.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.MaskFormatter("(##) # ####-####")));
+        } catch (java.text.ParseException ex) {
+            ex.printStackTrace();
+        }
+        getContentPane().add(jFormattedTextFieldTelefone, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 150, 150, -1));
+
         setSize(new java.awt.Dimension(366, 472));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
@@ -116,35 +130,46 @@ public class ClienteCadastrar extends javax.swing.JFrame {
 
         String nome = jTextFieldNome.getText();
         Integer tipoCliente = (jComboBoxTipoCliente.getSelectedItem().equals("Pessoa Jurídica")) ? 0 : 1;
-        String cpfCnpj = jTextFieldCpfCnpj.getText();
-        String telefone = jTextFieldTelefone.getText();
+        String cpfCnpj = jFormattedTextFieldCpfCnpj.getText().replace(".", "").replace("-", "");
+        String telefone = jFormattedTextFieldTelefone.getText().replace("(", "").replace(")", "").replace("-", "");
         String email = jTextFieldEmail.getText();
         String observacao = jTextAreaObs.getText();
 
         //Validações
         if (nome.equals("")) {
             JOptionPane.showMessageDialog(this, "Informe o nome.");
-         
+            jTextFieldNome.requestFocus();
             return;
         }
-        if (tipoCliente == null) {
+        if (tipoCliente < 0) {
             JOptionPane.showMessageDialog(this, "Informe o tipo cliente.");
-       
+            jTextFieldNome.requestFocus();
             return;
         }
-        if (nome.equals("")) {
-            JOptionPane.showMessageDialog(this, "Informe o nome.");
-         
+        if (cpfCnpj.equals("00000000000")
+                || cpfCnpj.equals("11111111111")
+                || cpfCnpj.equals("22222222222") || cpfCnpj.equals("33333333333")
+                || cpfCnpj.equals("44444444444") || cpfCnpj.equals("55555555555")
+                || cpfCnpj.equals("66666666666") || cpfCnpj.equals("77777777777")
+                || cpfCnpj.equals("88888888888") || cpfCnpj.equals("99999999999")
+                || (cpfCnpj.length() != 11)) {
+
+            JOptionPane.showMessageDialog(this, "Informe o CPF/CNPJ corretos.");
+            jTextFieldNome.requestFocus();
             return;
         }
-        if (email.equals("")) {
+        if (telefone.equals("")) {
+            JOptionPane.showMessageDialog(this, "Informe o telefone.");
+            jTextFieldNome.requestFocus();
+            return;
+        }
+        if (email.equals("")
+                || !email.contains("@") && !email.contains(".com")
+                || email.contains("@.com")
+                || email.contains("@") && !email.contains(".com")
+                || !email.contains("@") && email.contains(".com")) {
             JOptionPane.showMessageDialog(this, "Informe o email.");
-         
-            return;
-        }
-        if (nome.equals("")) {
-            JOptionPane.showMessageDialog(this, "Informe o nome.");
-           
+            jTextFieldNome.requestFocus();
             return;
         }
 
@@ -162,9 +187,18 @@ public class ClienteCadastrar extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jButtonCadastrarActionPerformed
 
-    private void jTextFieldCpfCnpjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldCpfCnpjActionPerformed
+
+    private void jFormattedTextFieldCpfCnpjActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jFormattedTextFieldCpfCnpjActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldCpfCnpjActionPerformed
+    }//GEN-LAST:event_jFormattedTextFieldCpfCnpjActionPerformed
+
+    private void jButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparActionPerformed
+        jTextFieldNome.setText("");
+        jTextFieldEmail.setText("");
+        jComboBoxTipoCliente.setSelectedIndex(0);
+        jFormattedTextFieldCpfCnpj.setText("");
+        jFormattedTextFieldTelefone.setText("");
+    }//GEN-LAST:event_jButtonLimparActionPerformed
 
     /**
      * @param args the command line arguments
@@ -180,16 +214,24 @@ public class ClienteCadastrar extends javax.swing.JFrame {
                 if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
+
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ClienteCadastrar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ClienteCadastrar.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ClienteCadastrar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ClienteCadastrar.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ClienteCadastrar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ClienteCadastrar.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
+
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ClienteCadastrar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(ClienteCadastrar.class
+                    .getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -208,6 +250,8 @@ public class ClienteCadastrar extends javax.swing.JFrame {
     private javax.swing.JButton jButtonCadastrar;
     private javax.swing.JButton jButtonLimpar;
     private javax.swing.JComboBox<String> jComboBoxTipoCliente;
+    private javax.swing.JFormattedTextField jFormattedTextFieldCpfCnpj;
+    private javax.swing.JFormattedTextField jFormattedTextFieldTelefone;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabelCpfCnpj;
     private javax.swing.JLabel jLabelEmail;
@@ -217,9 +261,7 @@ public class ClienteCadastrar extends javax.swing.JFrame {
     private javax.swing.JLabel jLabelTipoCliente;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextArea jTextAreaObs;
-    private javax.swing.JTextField jTextFieldCpfCnpj;
     private javax.swing.JTextField jTextFieldEmail;
     private javax.swing.JTextField jTextFieldNome;
-    private javax.swing.JTextField jTextFieldTelefone;
     // End of variables declaration//GEN-END:variables
 }

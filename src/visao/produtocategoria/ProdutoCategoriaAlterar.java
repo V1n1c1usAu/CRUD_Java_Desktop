@@ -27,11 +27,11 @@ public class ProdutoCategoriaAlterar extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jLabelTitulo = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanelDadosGerais = new javax.swing.JPanel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        jLabelID = new javax.swing.JLabel();
+        jLabelNome = new javax.swing.JLabel();
         jTextFieldNome = new javax.swing.JTextField();
         jTextFieldID = new javax.swing.JTextField();
         jButtonSalvarDadosGerais = new javax.swing.JButton();
@@ -39,13 +39,13 @@ public class ProdutoCategoriaAlterar extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Alterar");
 
-        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Alterar Produto Categoria");
+        jLabelTitulo.setFont(new java.awt.Font("Tahoma", 1, 24)); // NOI18N
+        jLabelTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelTitulo.setText("Alterar Produto Categoria");
 
-        jLabel2.setText("ID:");
+        jLabelID.setText("ID:");
 
-        jLabel3.setText("Nome:");
+        jLabelNome.setText("Nome:");
 
         jTextFieldID.addFocusListener(new java.awt.event.FocusAdapter() {
             public void focusLost(java.awt.event.FocusEvent evt) {
@@ -75,8 +75,8 @@ public class ProdutoCategoriaAlterar extends javax.swing.JFrame {
                 .addGroup(jPanelDadosGeraisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelDadosGeraisLayout.createSequentialGroup()
                         .addGroup(jPanelDadosGeraisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE))
+                            .addComponent(jLabelID, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabelNome, javax.swing.GroupLayout.DEFAULT_SIZE, 42, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanelDadosGeraisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanelDadosGeraisLayout.createSequentialGroup()
@@ -95,12 +95,12 @@ public class ProdutoCategoriaAlterar extends javax.swing.JFrame {
             .addGroup(jPanelDadosGeraisLayout.createSequentialGroup()
                 .addGap(25, 25, 25)
                 .addGroup(jPanelDadosGeraisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
+                    .addComponent(jLabelID)
                     .addComponent(jTextFieldID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanelDadosGeraisLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel3))
+                    .addComponent(jLabelNome))
                 .addGap(18, 18, 18)
                 .addComponent(jButtonSalvarDadosGerais)
                 .addContainerGap(38, Short.MAX_VALUE))
@@ -116,13 +116,13 @@ public class ProdutoCategoriaAlterar extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jTabbedPane1)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(jLabelTitulo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(20, 20, 20)
-                .addComponent(jLabel1)
+                .addComponent(jLabelTitulo)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jTabbedPane1))
         );
@@ -247,9 +247,9 @@ public class ProdutoCategoriaAlterar extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonSalvarDadosGerais;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabelID;
+    private javax.swing.JLabel jLabelNome;
+    private javax.swing.JLabel jLabelTitulo;
     private javax.swing.JPanel jPanelDadosGerais;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextField jTextFieldID;

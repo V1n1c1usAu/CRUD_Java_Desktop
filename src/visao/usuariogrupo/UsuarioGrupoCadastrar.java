@@ -32,8 +32,8 @@ public class UsuarioGrupoCadastrar extends javax.swing.JFrame {
 
         jButtonCadastrar = new javax.swing.JButton();
         jButtonLimpar = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
+        jLabelTitulo = new javax.swing.JLabel();
+        jLabelNome = new javax.swing.JLabel();
         jTextFieldNome = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -55,12 +55,12 @@ public class UsuarioGrupoCadastrar extends javax.swing.JFrame {
             }
         });
 
-        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("Cadastro de Grupo de Usuário");
+        jLabelTitulo.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabelTitulo.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabelTitulo.setText("Cadastro de Grupo de Usuário");
 
-        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
-        jLabel2.setText("Nome:");
+        jLabelNome.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabelNome.setText("Nome:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -70,7 +70,7 @@ public class UsuarioGrupoCadastrar extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
+                        .addComponent(jLabelNome)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTextFieldNome))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -79,7 +79,7 @@ public class UsuarioGrupoCadastrar extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonLimpar))
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
+                        .addComponent(jLabelTitulo)
                         .addGap(0, 133, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -87,10 +87,10 @@ public class UsuarioGrupoCadastrar extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(jLabelTitulo)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
+                    .addComponent(jLabelNome)
                     .addComponent(jTextFieldNome, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -128,7 +128,7 @@ public class UsuarioGrupoCadastrar extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonCadastrarActionPerformed
 
     private void jButtonLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLimparActionPerformed
-        // TODO add your handling code here:
+        jTextFieldNome.setText("");
     }//GEN-LAST:event_jButtonLimparActionPerformed
 
     /**
@@ -169,8 +169,8 @@ public class UsuarioGrupoCadastrar extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCadastrar;
     private javax.swing.JButton jButtonLimpar;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabelNome;
+    private javax.swing.JLabel jLabelTitulo;
     private javax.swing.JTextField jTextFieldNome;
     // End of variables declaration//GEN-END:variables
 }

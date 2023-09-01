@@ -1,0 +1,77 @@
+[33mcommit 7034837c61d3d12a59be1da4e5624d03ec12c6fe[m[33m ([m[1;36mHEAD -> [m[1;32mvalidacoes[m[33m, [m[1;31morigin/validacoes[m[33m)[m
+Author: Vinicius A <augustoviniciusss33@gmail.com>
+Date:   Thu Aug 31 18:05:27 2023 -0300
+
+    Validações campos obrigatórios not null
+
+[33mcommit 36cce01dab09d816cb38791bd653c271f3539e73[m[33m ([m[1;31morigin/cliente[m[33m, [m[1;32mcliente[m[33m)[m
+Author: Vinicius A <augustoviniciusss33@gmail.com>
+Date:   Thu Aug 31 16:41:46 2023 -0300
+
+    Criação das entidades e telas com funções
+
+[33mcommit 3ddc648ea9628577c8600b0697e38664f4c3ea40[m[33m ([m[1;31morigin/Produto[m[33m, [m[1;32mmain[m[33m)[m
+Author: Vinicius A <augustoviniciusss33@gmail.com>
+Date:   Tue Aug 29 11:50:49 2023 -0300
+
+    Criação da entidade Cliente
+
+[33mcommit d54867d12cf0887769995196a04b02cb96c72fba[m
+Author: Vinicius A <augustoviniciusss33@gmail.com>
+Date:   Mon Aug 28 16:17:19 2023 -0300
+
+    Entidade, funções e telas
+
+[33mcommit 6d7c7293f131e079956dca4647091200df940d5a[m[33m ([m[1;31morigin/ProdutoCategoria[m[33m)[m
+Author: Vinicius A <augustoviniciusss33@gmail.com>
+Date:   Mon Aug 28 11:36:29 2023 -0300
+
+    Acessar pela tela Principal
+
+[33mcommit 19315d57d53848793a9b1ad8e380e786a89f3b1c[m
+Author: Vinicius A <augustoviniciusss33@gmail.com>
+Date:   Sun Aug 27 19:21:54 2023 -0300
+
+    Criação da entitade, telas e funções
+
+[33mcommit c241ecfa55535ba766a830b0ba3ac83ffe9d6691[m[33m ([m[1;31morigin/UsuarioGrupo[m[33m)[m
+Author: Vinicius A <augustoviniciusss33@gmail.com>
+Date:   Sun Aug 27 18:44:46 2023 -0300
+
+    Adicionado entidade, telas e funções
+
+[33mcommit c6d16b053258bf48ea39b326c46b467a40b33f55[m[33m ([m[1;31morigin/AtualizandoUsuario[m[33m)[m
+Author: Vinicius A <augustoviniciusss33@gmail.com>
+Date:   Fri Aug 25 17:00:01 2023 -0300
+
+    modified: private.xml
+
+[33mcommit 37aa68df3fd9bcd485d7ca4d358ecce2603e2ce4[m
+Author: Vinicius A <augustoviniciusss33@gmail.com>
+Date:   Wed Aug 23 15:57:54 2023 -0300
+
+    Add combobox para Status e organização da pasta do projeto
+
+[33mcommit 89074e10bff3301f01f7d3888767f362bbf4ab49[m
+Author: Vinicius A <augustoviniciusss33@gmail.com>
+Date:   Thu Aug 17 12:18:11 2023 -0300
+
+    Atualizada a entidade Usuario
+
+[33mcommit 3fc04cbf25ac889bfc3353f8a055aba8babfdbd7[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Vinicius A <augustoviniciusss33@gmail.com>
+Date:   Thu Aug 17 11:39:04 2023 -0300
+
+    teste
+
+[33mcommit 6c9e845799386a70f951923ecdd8b368cdc7f34f[m
+Author: Vinicius A <augustoviniciusss33@gmail.com>
+Date:   Thu Aug 17 11:28:43 2023 -0300
+
+    Envio dos arquivos do projeto
+
+[33mcommit 948781787e0b0d0aefc64c4c45535ca607918bde[m
+Author: Vinicius Augusto dos Santos Silva <96804098+V1n1c1usAu@users.noreply.github.com>
+Date:   Thu Aug 17 11:18:32 2023 -0300
+
+    Initial commit

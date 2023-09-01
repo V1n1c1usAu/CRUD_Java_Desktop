@@ -9,10 +9,17 @@ import modelo.ProdutoCategoria;
 
 /**
  *
- * @author aluno
+ * @author Vinicius Augusto
  */
 public class ProdutoCategoriaDao {
 
+    /**
+     * Insere um objeto no banco.
+     *
+     * @param u
+     * @return
+     * @throws Exception
+     */
     public int inserir(ProdutoCategoria u) throws Exception {
         int retorno;
 
@@ -29,6 +36,13 @@ public class ProdutoCategoriaDao {
         return retorno;
     }
 
+    /**
+     * Recebe um nome e retorna uma lista.
+     *
+     * @param nome
+     * @return
+     * @throws Exception
+     */
     public List<ProdutoCategoria> buscar(String nome) throws Exception {
         Connection conexao = Conexao.getConexao();
         String sql = "select * from produtocategoria";
@@ -65,6 +79,13 @@ public class ProdutoCategoriaDao {
         return lista;
     }
 
+    /**
+     * Função realiza a busca de um único objeto.
+     *
+     * @param id
+     * @return
+     * @throws Exception
+     */
     public ProdutoCategoria getProdutoCategoria(int id) throws Exception {
         Connection conexao = Conexao.getConexao();
         String sql = "select * from produtocategoria where id = ?";
@@ -90,6 +111,13 @@ public class ProdutoCategoriaDao {
         return obj;
     }
 
+    /**
+     * Realiza UPDATE de objeto.
+     *
+     * @param u
+     * @return
+     * @throws Exception
+     */
     public int atualizar(ProdutoCategoria u) throws Exception {
         int retorno;
 
@@ -108,6 +136,12 @@ public class ProdutoCategoriaDao {
         return retorno;
     }
 
+    /**
+     * Realiza o DELETE de objeto.
+     *
+     * @param id
+     * @throws Exception
+     */
     public void excluir(Integer id) throws Exception {
         int retorno;
 

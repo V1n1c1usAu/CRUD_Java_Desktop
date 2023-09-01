@@ -9,10 +9,17 @@ import modelo.UsuarioGrupo;
 
 /**
  *
- * @author aluno
+ * @author Vinicius Augusto
  */
 public class UsuarioGrupoDao {
 
+    /**
+     * Insere um objeto no banco.
+     *
+     * @param u
+     * @return
+     * @throws Exception
+     */
     public int inserir(UsuarioGrupo u) throws Exception {
         int retorno;
 
@@ -29,6 +36,13 @@ public class UsuarioGrupoDao {
         return retorno;
     }
 
+    /**
+     * Recebe um nome e retorna uma lista.
+     *
+     * @param nome
+     * @return
+     * @throws Exception
+     */
     public List<UsuarioGrupo> buscar(String nome) throws Exception {
         Connection conexao = Conexao.getConexao();
         String sql = "select * from usuariogrupo";
@@ -65,6 +79,13 @@ public class UsuarioGrupoDao {
         return lista;
     }
 
+    /**
+     * Função realiza a busca de um único objeto.
+     *
+     * @param id
+     * @return
+     * @throws Exception
+     */
     public UsuarioGrupo getUsuarioGrupo(int id) throws Exception {
         Connection conexao = Conexao.getConexao();
         String sql = "select * from usuariogrupo where id = ?";
@@ -90,6 +111,13 @@ public class UsuarioGrupoDao {
         return obj;
     }
 
+    /**
+     * Realiza UPDATE de objeto.
+     *
+     * @param u
+     * @return
+     * @throws Exception
+     */
     public int atualizar(UsuarioGrupo u) throws Exception {
         int retorno;
 
@@ -108,6 +136,12 @@ public class UsuarioGrupoDao {
         return retorno;
     }
 
+    /**
+     * Realiza o DELETE de objeto.
+     *
+     * @param id
+     * @throws Exception
+     */
     public void excluir(Integer id) throws Exception {
         int retorno;
 
